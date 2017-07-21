@@ -1,37 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Movies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Year</th>
-      <th>Integer</th>
-      <th>Desc</th>
-      <th>Text</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.integer %></td>
-        <td><%= movie.desc %></td>
-        <td><%= movie.text %></td>
-        <td><%= movie.user.email %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<h1>BlackList</h1>
+<center>
+    <% @movies.each do |movie|%>
+    <div class="jumbotron" style="max-width: 500px;">
+  <h4><%= movie.title %> (<%= movie.year %>)</h4>
+  <p> 
+  <%= image_tag movie.image, class: "img-responsive" if movie.image != nil %>
+  <%= movie.user.email %>
+  <%= link_to 'Show', movie %>
+  <%= link_to 'Edit', edit_movie_path(movie) %>
+  <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %>
+  
+  </p>
+  <p><%= link_to 'Learn more', movie, class: "btn btn-primary btn-lg" %></p>
+</div>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </center>
 
-<br>
-
-<%= link_to 'New Movie', new_movie_path %>

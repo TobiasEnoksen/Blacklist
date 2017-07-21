@@ -11,32 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :movie_title %>
+  <div class="form-group">
+    <h4>Title:</h4>
+    <%= form.text_field :title, class: "form-control input-lg" %>
   </div>
 
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.text_field :year, id: :movie_year %>
+  <div class="form-group">
+    <h4>Year:</h4>
+    <%= form.text_field :year, class: "form-control input-lg" %>
   </div>
 
-  <div class="field">
-    <%= form.label :integer %>
-    <%= form.text_field :integer, id: :movie_integer %>
+  <div class="form-group">
+    <h4>Description:</h4>
+    <%= form.text_field :desc, class: "form-control input-lg" %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= form.text_field :image, class: "form-control input-lg" %>
   </div>
 
-  <div class="field">
-    <%= form.label :desc %>
-    <%= form.text_field :desc, id: :movie_desc %>
-  </div>
-
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text, id: :movie_text %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit 'Create Movie', class: "btn btn-danger btn-lg" %>
   </div>
 <% end %>

@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new]
 
   # GET /movies
   # GET /movies.json
@@ -24,7 +25,7 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    @movie = current_user.create(movie_params)
+    @movie = current_user.movies.create(movie_params)
 
     respond_to do |format|
       if @movie.save
@@ -69,6 +70,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :year, :integer, :desc, :text, :user_id)
+      params.require(:movie).permit(:title, :year, :desc, :text, :user_id, :image)
     end
 end
